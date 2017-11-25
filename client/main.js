@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
 
 // Collections
-import { Players } from './../imports/api/players';
+import { Players, calculatePlayerPositions } from './../imports/api/players';
 
 // Components
 import App from './../imports/ui/App';
@@ -18,7 +18,7 @@ Meteor.startup(() => {
         score: -1
       }
     }).fetch();
-
-    ReactDOM.render(<App title={title} players={players} subtitle={subtitle}/>, document.getElementById('app'));
+    let positionedPlayers = calculatePlayerPositions(players);
+    ReactDOM.render(<App title={title} players={positionedPlayers} subtitle={subtitle}/>, document.getElementById('app'));
   });
 });
