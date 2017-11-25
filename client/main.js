@@ -12,13 +12,13 @@ import App from './../imports/ui/App';
 Meteor.startup(() => {
   Tracker.autorun(() => {
     let title = 'Score Keep';
-    let subTitle = 'Created by Arnaud';
+    let subtitle = 'Created by Arnaud';
     let players = Players.find({}, {
       sort: {
         score: -1
       }
     }).fetch();
 
-    ReactDOM.render(<App title={title} players={players}/>, document.getElementById('app'));
+    ReactDOM.render(<App title={title} players={players} subtitle={subtitle}/>, document.getElementById('app'));
   });
 });
